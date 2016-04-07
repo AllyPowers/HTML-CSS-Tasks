@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task6</title>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		body{background-color: #767777;font-family:"Microsoft YaHei";}
+		.all{height: 1386px;width: 980px;margin: 0 auto;background-color: #fff;padding: 0 44px;position: relative;}
+		.header{ margin-bottom: 30px; border-bottom: solid 2px;width:900px;color: #938e8c;}
+		.header .header-nav{display: inline-block; background-color: #db3e75;width: 110px;height: 61px;}
+		.header .header-nav p{font-size: 12px;color: #ffffff;padding-top: 40px;}
+		.header .time{display: inline-block; font-size: 12px;color: #d45d5c;float: right;margin-top: 40px;}
+		.main{width: 900px;margin-right: 0px;}
+		.main .picture1{ width: 892px; position: relative;margin-bottom: 30px;}
+		.main .picture1 .picture-nav .img1{position: absolute;top: 0; display: block; width: 191px;height: 301px;background-color: green;opacity: 0.3; }
+		.main .picture1 .picture-nav .img2{position: absolute;top: 0;left: 451px; display: block; width: 191px;height: 301px;background-color: red;opacity: 0.3; }
+
+		.main .picture1 .data{position: absolute;top: 0;left: 688px;}
+		.main .picture1 .data em{display: block; width: 203px;height: 2px;background-color: #cc8091;}
+		.main .picture1 .data .data-nav{ font-size:24px;color: #000;text-decoration: underline; font-variant:small-caps;}
+		.main .picture1 .data .data-nav1{line-height: 10px; font-family:"KaiTi";font-size:12px;color: #676767;}
+		.main .picture1 .data .data-nav2{font-size:116px;color: #75b86b;font-style: italic;}
+		.main .picture1 .data .data-nav3{position: relative;}
+		.main .picture1 .data .data-nav3 .max{position: absolute;font-size:55px;color: #cc8091;}
+		.main .picture1 .data .data-nav3 .mid{position: absolute;left: 78px;bottom: -45px; font-family:"Microsoft YaHei";font-size:21px;color: #cc8091;}
+		.main .picture1 .data .data-nav3 .min{position: absolute;left: 78px;bottom: -60px;  font-family:"Microsoft YaHei";font-size:12px;color: #cc8091;}
+
+		.main .text1 .what{float: left;width: 230px;margin: 0 28px 50px 0;}
+		.main .text1 .when{float: left;width: 201px;margin: 0 28px 50px 0;}
+		.main .text1 .how{float: left;width: 140px;margin: 0 200px 50px 0;}
+		.main .text1 .whatlist{width: 140px;float: left;margin: 0 28px 50px 0;}
+		.main .text1 .what h2{font-size: 16px;color: #418c59;font-weight: 1000;text-decoration: underline;}
+		.main .text1 .when h2{font-size: 16px;color: #d2994f;font-weight: 1000;text-decoration: underline;}
+		.main .text1 .how h2{font-size: 16px;color: #cc7680;font-weight: 1000;text-decoration: underline;}
+		.main .text1 .text1-nav p{font-size: 12px;color: #767777;font-family:"SimSun";}
+		.main .text1 .whatlist p{font-size: 12px;color: #231815;opacity: 0.7;line-height: 16px;}
+		.main .text1 .whatlist p span{color: #cd4a48;font-style: italic;}
+		
+		.main .left{width: 415px;float: left;}
+		.main .left .left-nav1{border-bottom: solid 2px #11456b;padding-bottom: 10px;}
+		.main .left .left-nav1 p{font-family: "SimHei";font-weight: 700;font-size: 42px;color: #11456b;}
+		.main .left .left-nav1 span{font-size: 70px;color: #f5e327;font-style: italic;}
+		.main .left .left-nav1 .min{font-size: 33px; color: #11456b;}
+
+		.main .left .left-nav2 p{font-size: 12px;color: #767777;font-family: "SimSun";}
+		.main .left .left-nav2 .para1{margin-top: 25px;}
+		.main .left .left-nav2 .para1 span{margin-right: 20px; float: left; font-size: 70px;color: #f5e327;}
+		.main .left .left-nav2 img{float: right;margin: 20px;}
+		.main .left .left-nav2 .para2{text-indent: 2em;}
+		.main .left .left-nav2 .para3{float: left;text-indent: 2em;}
+
+		.main .right{float: right;width: 458px;}
+		.main .right .pic {position: relative;}
+		.main .right .pic .img-nav{position: absolute;bottom: 0; width: 458px;height: 61px;opacity: 0.5;background-color: #000;}
+		.main .right .pic .img-nav p{position: absolute;margin-left: 36px;bottom: 10px; border-left: solid 3px #72b16a; font-size: 26px;color: #fff;padding-left: 12px;}
+		.main .right .pic .img-nav span{font-size: 12px;color: #72b16a;font-style: italic;}
+
+		.main .right .text2{background-color:#e7eecd;width: 459px;height: 338px;margin-top: 30px;}
+		.main .right .text2 .textlist{padding: 20px 0 50px 10px}
+		.main .right .text2 .textlist p{display: inline-block;  font-size: 16px;color: #5a5b5b;font-family: "SimSun";text-align: left;padding: 10px 0 10px 5px;} 
+		.main .right .text2 .textlist .triangle{ display: inline-block; border-left: solid 5px transparent;border-right: solid 5px transparent;border-bottom: solid 10px #10456b;}
+		.main .right .text2 .textlist span{font-size: 12px;font-style: italic;text-align: right;}
+		.main .right .text2 .red{width: 260px;height: 124px;background-color: #cd3e6f;float: left;padding-top: 30px;position: relative;}
+		.main .right .text2 .red span{display: inline-block; padding: 0 8px 10px 14px; float: left;color: #fff;font-size: 80px;}
+		.main .right .text2 .red .red-nav{border-left: solid 2px #fff; padding-left: 10px; display: inline-block;height: 86px;float: left;position: absolute;left: 70px;bottom: 25px;}
+		.main .right .text2 .red .max{font-size: 21px;font-family: "SimHei";font-style: italic;color: #fff;}
+		.main .right .text2 .red .min{ color: #fff; font-size: 12px;font-family: "SimHei";}
+		.main .right .text2 .hello{position: relative; width: 198px;height: 154px;display: inline-block;}
+		.main .right .text2 .hello span{position: absolute;top:0; font-size: 72px;color: #d45d5c;font-family: "SimHei";}
+		.main .right .text2 .hello p{position: absolute;top: 30px;left: 5px; font-size: 14px;color: #5a5b5b;font-family: "SimHei";font-style: italic;line-height: 16px;padding:0 0 20px 5px;text-indent: 2em}
+		.main .right .text2 .hello .hello-nav{position: absolute;top: 100px; right: 40px;}
+
+		.footer{display: block;width: 892px;height: 59px;border-top: solid 1px #938e8c; position: absolute;bottom: 0;}
+		.footer p{display: block; float: right;color: #cd3e6f;font-family: "SimHei";}
+		.clear{clear: both;}
+	</style>
+</head>
+<body>
+	<div class="all">
+		<div class="header">
+			<div class="header-nav"><p>ife.baidu.com</p></div>
+			<div class="time">2016.03</div>
+		</div>
+		<div class="main">
+			<div class="picture1">
+				<div class="picture-nav">
+					<img src="../img/6.1.jpg">
+					<div class="img1"></div>
+					<div class="img2"></div>
+				</div>
+				<div class="data">
+					<em></em>
+					<p class="data-nav">About</p>
+					<p class="data-nav"> Technologe</p>
+					<p class="data-nav1">About technologe about technologe about technologe</p>
+					<p class="data-nav2">700</p>
+					<div class="data-nav3">
+						<p class="max">3.2</p>
+						<p class="mid">css</p>
+						<p class="min">cssssccsccscssc</p>
+					</div>
+				</div>
+			</div>
+			<div class="text1">
+				<div class="text1-nav">
+					<div class="what">
+						<h2>What</h2>
+						<p>前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>
+					</div>
+					<div class="when">
+						<h2>When</h2>
+						<p>前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>
+					</div>
+					<div class="how">
+						<h2>How</h2>
+						<p>端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端前端</p>
+					</div>
+				</div>
+				<div class="whatlist">
+					<p>What--------<span>40%</span></p>
+					<p>What--------<span>30%</span></p>
+					<p>What--------<span>30%</span></p>
+				</div>
+			</div>
+			<div class="left">
+				<div class="left-nav1">
+					<p>
+						<span>THE</span>
+						TECHNOLOGE
+						OF FRONT
+					</p>
+					<p class="min">前端技术领域</p>
+				</div>
+				<div class="left-nav2">
+					<p class="para1">
+						<span>前</span>
+						端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端前端前端
+					</p>
+					<img src="../img/6.3.jpg" alt>
+					<p>
+					    端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端
+					</p>
+					<p class="para2">
+					    端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端前端前端端前
+					</p>
+					<p class="para3">
+						端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端端前端前端前端前端前端
+					</p>
+				</div>
+			</div>
+			<div class="right">
+				<div class="pic">
+					<img src="../img/6.2.jpg">
+					<div class="img-nav">
+						<em></em>
+						<p>前端技术<span>前端技术前端技术</span></p>
+					</div>
+				</div>
+				<div class="text2">
+					<div class="textlist">
+						<p><span class="triangle"></span>&nbsp前端前端前端前端前端前端...................<span>前端</span></p>
+						<p><span class="triangle"></span>&nbsp前端前端前端前端...................<span>前端前</span></p>
+						<p><span class="triangle"></span>&nbsp前端前端前端前端前端前端前端...................<span>前端</span></p>
+					</div>
+					<div class="red">
+						<span>0</span>
+						<div class="red-nav">
+							<p class="max">
+								ONE  TWO<br>THREE  FORE  FIVE
+							</p>
+							<p class="min">hello world hello world hello world</p>
+						</div>
+					</div>
+					<div class="hello">
+						<span>“</span>
+						<p>world hello world hello world hello world hello world hello world hello world hello world hello world hello world hello world </p>
+						<span class="hello-nav">”</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<p>ife.baidu.com</p>
+		</div>
+		<div class="clear"></div>
+	</div>
+</body>
+</html>

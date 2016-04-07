@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task9</title>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		body{font-family: "Microsoft YaHei";color: #8c8c8c;background-color: rgb(237,237,237);}
+		.header{height: 55px;background-color: rgb(33,137,192);width: 100%;min-width: 1280px;}
+		.header .header-nav{margin: 0 auto;width: 1280px;height: 55px;position: relative;}
+		.header img{margin: 10px 0 0 51px;float: left;}
+		.header .search{width: 310px;position: relative;float: right;padding-right: 100px;padding-top: 13px;}
+		.header .search img{position: absolute;left: 10px;top:18px;margin: 0;}
+		.header .search input{border-radius: 15px;width: 310px;height: 28px;border: none;}
+		.header .enter{position: absolute;right: 10px;top: 10px;}
+		.header .enter img{display: inline-block;}
+		.header .enter p{color: #fff;display: inline-block;padding: 10px 15px 0 5px;font-size: 12px;}
+
+		.main{min-width: 1280px;margin: 0 auto;width: 50%;}
+		.main .left{float: left;width: 260px;height: 1210px;background-color: #292f3d;}
+		.main .left .head{height: 150px;margin: 18px 0 0 45px;}
+		.main .left .head .head-nav{position: relative;}
+		.main .left .head .head-nav p{color: #fff;position: absolute;top: 20px;left: 75px;}
+		.main .left .head .text{margin: 15px 0 0 10px;}
+		.main .left .head .text ul{list-style: none;}
+		.main .left .head .text li{display: inline-block;padding:0 30px 0 15px;color: #627789;cursor: pointer;font-size: 12px;}
+		.main .left .head .text .line{border-right: solid 1px #627789;}
+
+		.main .left .mid ul{list-style: none;color: #627789;cursor: pointer;}
+		.main .left .mid .down{font-size: 12px;padding:16px 0 16px 45px;}
+		.main .left .mid .top{background-color: #373e4d;height: 191px;font-size: 12px;padding: 16px 0 16px 45px;}
+		.main .left .mid .top li{padding: 10px 0 10px 15px;}
+		.main .left .mid .top .one{margin-left: 20px;}
+		.main .left .mid .top img{margin-right: 5px;}
+
+		.main .right{float: left;}
+		.main .right .head{min-width: 1000px;min-height: 31px;float: left;color: rgb(180,180,180);background-color: #fff;}
+		.main .right .head p{font-size: 13px;padding: 5px 0 0 30px;}
+		.main .right .head span{color: rgb(57,138,192);}
+		.main .right .foot{max-width: 890px;padding: 51px 0 0 29px;margin: 0 auto;}
+		.main .right .foot .plate1{position: relative; background-color: #fff;border: solid 1px #dddfe1;height: 88px;padding-left:  29px;color: #b6b5b5;font-size: 12px;}
+		.main .right .foot .plate1 .find{float: left;padding-top: 20px;}
+		.main .right .foot .plate1 .find span{padding-right: 10px;}
+		.main .right .foot .plate1 .find select{height: 24px;}
+		.main .right .foot .plate1 .change .one{float: left;width: 164px;margin: 15px 0 0 37px;}
+		.main .right .foot .plate1 .change .one select{width: 123px;height: 24px;padding-left:10px;margin-top: 5px;}
+		.main .right .foot .plate1 .change .one span{padding-right: 8px;}
+		.main .right .foot .plate1 .change img{margin: 25px 0 0 5px;}
+		.main .right .foot .plate1 .data{position: absolute;right: 150px;top: 18px; width: 320px;height: 55px;}
+		.main .right .foot .plate1 .data .data-nav1{margin-bottom: 5px;}
+		.main .right .foot .plate1 .data .data-nav1 input{height: 24px;width: 110px;padding-left: 10px;}
+		.main .right .foot .plate1 .data .data-nav1 select{height: 24px;width: 72px;}
+		.main .right .foot .plate1 .data .data-nav1 span{padding-right: 10px;}
+		.main .right .foot .plate1 .data .data-nav2 select{height: 24px;}
+		.main .right .foot .plate1 .data .data-nav2 span{padding-right: 10px;}
+		.main .right .foot .plate1 .data .data-nav2 select{height: 24px;width: 70px;}
+		.main .right .foot .plate1 .data .data-nav2 .people{width: 124px;}
+		.main .right .foot .plate1 .search{position: absolute;right: 90px;top: 35px;}
+		.main .right .foot .plate1 .search input{width: 50px;height: 25px;color: #fff;border: none;background-color: rgb(33,137,192);}
+
+		.main .right .foot .plate2 ul{list-style: none;color: 627789;cursor: pointer;height: 67px;margin-top: 10px;}
+		.main .right .foot .plate2 li{border-top: solid 1px #c9c6c9;border-left: solid 1px #dddfe1;background-color: #fff;display: inline-block;height: 67px;width: 110px;text-align: center;float: left;margin-right: 4px;}
+		.main .right .foot .plate2 .time-left{width: 29px;box-sizing: border-box;margin-top: 2px;}
+		.main .right .foot .plate2 .time-left img{padding: 25px 5px 20px 5px;}
+		.main .right .foot .plate2 .time-t{border-top: solid 4px rgb(33,137,192);color: #000;font-size: 12px;}
+		.main .right .foot .plate2 .time-t p{margin-top: 13px;}
+		.main .right .foot .plate2 .time-t span{color: #fb5d21;font-size: 20px;}
+		.main .right .foot .plate2 .time-right{width: 29px;}
+		.main .right .foot .plate2 .time-right img{padding: 25px 5px 20px 5px;}
+		.main .right .foot .plate2 .time-h{width: 128px;}
+		.main .right .foot .plate2 .time-nav p{margin-top:13px;color: #000;font-size: 12px;}
+		.main .right .foot .plate2 .time-nav span{color: #fb5d21;font-size: 20px;}
+		.main .right .foot .plate2 .time-h img{margin-top: 20px;margin-right: 5px;}
+		.main .right .foot .plate2 .time-h span{font-size: 10px;color: #000;padding-top: 10px;}
+
+		.main .right .foot .plate3 h4{font-size: 12px;color: #000;margin-top: 20px;margin-bottom: 10px;}
+		.main .right .foot .plate3 ul{list-style: none;height: 72px;}
+		.main .right .foot .plate3 li{display: inline-block;width: 200px;background-color: #fff;height: 72px;}
+		.main .right .foot .plate3 .green{border-left:solid 4px #00b49e;margin-right: 19px;}
+		.main .right .foot .plate3 .green .color1{width: 61px;height: 47px;background-color: #00b49e;display: inline-block;margin: 12px 0 0 70px;}
+		.main .right .foot .plate3 .blue{border-left:solid 4px #008dbe;margin-right: 19px;}
+		.main .right .foot .plate3 .blue .color2{width: 61px;height: 47px;background-color: #008dbe;display: inline-block;margin: 12px 0 0 70px;}
+		.main .right .foot .plate3 .red{border-left:solid 4px #dc423c;margin-right: 19px;}
+		.main .right .foot .plate3 .red .color3{height: 47px;width: 61px;background-color: #dc423c;display: inline-block;margin: 12px 0 0 70px;}
+		.main .right .foot .plate3 .yellow{border-left:solid 4px #e7cb5a;}
+		.main .right .foot .plate3 .yellow .color4{width: 61px;height: 47px;background-color: #e7cb5a;display: inline-block;margin: 12px 0 0 70px;}
+		.main .right .foot .plate3 .text{margin-top: 15px;margin-left: 10px;display: inline-block;}
+		.main .right .foot .plate3 p{color: #000;font-size: 12px;}
+		.main .right .foot .plate3 span{color: #b1b0b0;padding-top: 10px;}
+
+		.main .right .foot .plate4{height: 358px;border-radius: 5px;margin-top: 15px;}
+		.main .right .foot .plate4 .plate4-left{float: left;border-radius: 5px;border: solid 1px #ced1d4;width: 531px;background-color: #fff;font-size: 12px;line-height: 40px;}
+		.main .right .foot .plate4 .plate4-left .plate4-left-nav{height: 41px;background-color: #f4f5f6;color: #b5b5b5;border-radius: 5px;border-bottom: solid 1px #ced1d4;padding-left: 21px;}
+		.main .right .foot .plate4 .plate4-left .plate4-list{background-color: #fff;padding:12px 0 15px 21px;border-radius: 0 0 5px 5px;}
+		.main .right .foot .plate4 .plate4-left .plate4-list ul{list-style: none;}
+		.main .right .foot .plate4 .plate4-left .plate4-list li{display: inline-block;color: #535354;cursor: pointer;font-size: 12px;width: 57px;height: 29px;border: solid 1px #ededf0;border-radius: 5px 5px 0 0;background-color: #ededef;padding-left: 25px;}
+		.main .right .foot .plate4 .plate4-left .plate4-list .table{height: 251px; width: 480px;border: solid 1px #ddd;border-radius: 0 0 5px 5px;margin-top: -10px;}
+		.main .right .foot .plate4 .plate4-left .plate4-list .table table{border-collapse: collapse; margin: 0 auto;margin-top: 29px;border-color: rgb(221,221,221);}
+		.main .right .foot .plate4 .plate4-left .plate4-list .table .bac{height: 29px;width: 99px;padding-left: 16px;color: #53536b;font-size: 12px;background-color: #f4f5f6;}
+		.main .right .foot .plate4 .plate4-left .plate4-list .table tr td{height: 29px;width: 99px;color: #53536b;font-size: 12px;padding-left: 16px; box-sizing: border-box;}
+		.main .right .foot .plate4 .plate4-left .plate4-list .table tr{height: 29px;line-height: 29px;}
+
+		.main .right .foot .plate4 .plate4-right h4{height: 41px;background-color:#f4f5f6;color: #b5b5b5;border-radius: 5px;border-bottom: solid 1px #ced1d4;padding-left: 21px;}
+		.main .right .foot .plate4 .plate4-right{float: left;;border-radius: 5px;border: solid 1px #ced1d4;width: 350px;background-color: #fff;font-size: 12px;line-height: 40px;height: 353px;margin-left: 5px;}
+		.main .right .foot .plate4 .plate4-right .plate-text p{color: #b5b5b5;}
+		.main .right .foot .plate4 .plate4-right .plate-text span{color: #000;}
+		.main .right .foot .plate4 .plate4-right .plate-text .text-one{width: 281px;margin: 0 auto;padding-left: 18px;border-bottom: solid 1px #e9e8e8;height: 50px;margin-top: 10px;}
+		.main .right .foot .plate4 .plate4-right .plate-text .text-one p{line-height: 20px;}
+		.main .right .foot .plate4 .plate4-right .plate-text .text-two{height: 60px;width: 281px;margin: 0 auto;border-bottom: solid 1px #ced1d4;}
+		.main .right .foot .plate4 .plate4-right .plate-text .text-two .text-two-left{display: inline-block;padding-left: 10px;padding-right: 40px;border-right: solid 1px #ced1d4;line-height: 20px;padding-top: 10px;padding-bottom: 10px;}
+		.main .right .foot .plate4 .plate4-right .plate-text .text-two .text-two-right{display: inline-block;line-height: 20px;padding-top: 10px;padding-left: 10px;padding-bottom: 10px;}
+		.main .right .foot .plate4 .plate4-right .plate-text .text-three{border-bottom: solid 1px #ced1d4;height: 140px;width: 281px;margin: 0 auto;padding-left: 18px;line-height: 20px;padding-top: 5px;}
+		.main .right .foot .plate4 .plate4-right .plate-text .text-four{width: 281px;margin: 0 auto;padding-left: 18px;}
+		.main .right .foot .plate4 .plate4-right .plate-text .text-four input{display: inline-block;}
+		.main .right .foot .plate4 .plate4-right .plate-text .text-four p{display: inline-block;}
+		.main .right .foot .plate4 .plate4-right .plate-text .text-four .button{margin-left: 128px;background-color: #388ac1;color: #fff;width: 52px;height: 27px;border: none;}
+		.main .right .foot .plate4 .plate4-right .plate-text .text-four input{padding-right: 5px;}
+
+		.main .right .foot .plate5{height: 360px;border-radius: 5px;margin-top: 10px;}
+		.main .right .foot .plate5 .plate5-left{float: left;border-radius: 5px;border: solid 1px #ced1d4;width: 352px;background-color: #fff;font-size: 12px;line-height: 40px;}
+		.main .right .foot .plate5 .plate5-left h4{height: 41px;background-color:#f4f5f6;color: #b5b5b5;border-radius: 5px;border-bottom: solid 1px #ced1d4;padding-left: 21px;}
+		.main .right .foot .plate5 .plate5-left .plate5-list .list-one{border-bottom: solid 1px rgb(104,205,237);width: 315px;margin: 0 auto;}
+		.main .right .foot .plate5 .plate5-left .plate5-list .list-one select{border: solid 1px #ced1d4;margin-right: 10px;margin-left: 4px;}
+		.main .right .foot .plate5 .plate5-left .plate5-list .list-one span{border: solid 1px #ced1d4;color: #000;padding: 1px 5px;}
+		.main .right .foot .plate5 .plate5-left .plate5-list .list-two ul{border-bottom: solid 1px #ced1d4;width: 315px;margin: 0 auto; list-style: none;line-height: 35px;}
+		.main .right .foot .plate5 .plate5-left .plate5-list .list-two li{display: inline-block;padding-left: 20px;padding-right: 8px; color: #000;}
+		.main .right .foot .plate5 .plate5-left .plate5-list .list-three{width: 315px;margin: 0 auto;margin-top: 5px;}
+		.main .right .foot .plate5 .plate5-left .plate5-list .list-three ul{list-style: none;}
+		.main .right .foot .plate5 .plate5-left .plate5-list .list-three li{display: inline-block;height: 42px;height: 42px;line-height: 20px;}
+		.main .right .foot .plate5 .plate5-left .plate5-list .list-three p{color: #000;line-height: 20px;padding-left: 8px;padding-right: 9px;text-align: center;}
+		.main .right .foot .plate5 .plate5-left .plate5-list .list-three .list-three1 .list-three1-nav{margin-left: 39px;}
+		.main .right .foot .plate5 .plate5-left .plate5-list .list-three .list-red{color: #d70025;}
+		.main .right .foot .plate5 .plate5-left .plate5-list .list-three .border{border:solid 1px #d70025; }
+
+		.main .right .foot .plate5 .plate5-right{float: left;border-radius: 5px;border: solid 1px #ced1d4;width: 526px;background-color: #fff;font-size: 12px;line-height: 40px;margin-left: 5px;height: 395px;}
+		.main .right .foot .plate5 .plate5-right h4{height: 41px;background-color:#f4f5f6;color: #b5b5b5;border-radius: 5px;border-bottom: solid 1px #ced1d4;padding-left: 21px;}
+		.main .right .foot .plate5 .plate5-right .plate5-table table{margin: 0 auto;border-collapse: collapse; width: 449px;height: 269;margin-top: 20px;color: #000;}
+		.main .right .foot .plate5 .plate5-right .plate5-table tr{line-height: 26px;}
+		.main .right .foot .plate5 .plate5-right .plate5-table .bor1{text-align: center; width: 67px;height: 24px;}
+		.main .right .foot .plate5 .plate5-right .plate5-table .bor2{text-align: center; width: 92px;height: 24px;}
+		.main .right .foot .plate5 .plate5-right .plate5-table .bor3{padding-left: 20px;}
+		.main .right .foot .plate5 .plate5-right .plate5-table .plate5-bac{background-color: #f4f5f6;}
+		.main .right .foot .plate5 .plate5-right .plate5-table .line{display: inline-block;height: 4px;width: 167px;margin-left: 18px;background-color: #dcdcdc;}
+		.main .right .foot .plate5 .plate5-right .plate5-table .line .line-red1{background-color: #fa6757;height: 4px;width: 140px;display: block;}
+		.main .right .foot .plate5 .plate5-right .plate5-table .line .line-red2{background-color: #fa6757;height: 4px;width: 120px;display: block;}
+		.main .right .foot .plate5 .plate5-right .plate5-table .line .line-blue1{background-color: #68cded;height: 4px;width: 100px;display: block;}
+		.main .right .foot .plate5 .plate5-right .plate5-table .line .line-blue2{background-color: #68cded;height: 4px;width: 90px;display: block;}
+		.main .right .foot .plate5 .plate5-right .plate5-table .line .line-blue3{background-color: #68cded;height: 4px;width: 80px;display: block;}
+		.main .right .foot .plate5 .plate5-right .plate5-table .line .line-blue4{background-color: #68cded;height: 4px;width: 70px;display: block;}
+		.main .right .foot .plate5 .plate5-right .plate5-table .line .line-blue5{background-color: #68cded;height: 4px;width: 60px;display: block;}
+		.main .right .foot .plate5 .plate5-right .plate5-table .line .line-blue6{background-color: #68cded;height: 4px;width: 50px;display: block;}
+		.main .right .foot .plate5 .plate5-right .plate5-table .line .line-blue7{background-color: #68cded;height: 4px;width: 40px;display: block;}
+		.main .right .foot .plate5 .plate5-right .plate5-table .line .line-blue8{background-color: #68cded;height: 4px;width: 30px;display: block;}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<div class="header-nav">	
+			<img src="../img/9.1.png" alt>
+			<div class="search">
+				<img src="../img/9.2.png" alt>
+				<input type="text">
+			</div>
+			<div class="enter">
+				<img src="../img/9.17.png" alt>
+				<p>登录</p>
+			</div>
+		</div>
+	</div>
+	<div class="main">
+		<div class="left">
+			<div class="head">
+				<div class="head-nav">
+					<img src="16.png">
+					<p>ABC123</p>
+				</div>
+				<div class="text">
+					<ul>
+						<li class="line">
+							<p>110</p>
+							<p>收藏</p>
+						</li>
+						<em></em>
+						<li>
+							<p>313</p>
+							<p>粉丝</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="mid">
+				<ul>
+					<li class="top">
+						<img src="../img/9.9.png" alt>
+						<span>个人报表</span>
+						<ul>
+							<li>
+								<img src="../img/9.12.png" alt>
+								<img src="../img/9.11.png" alt>
+								<span>文件一</span>
+							</li>
+							<li>
+								<img src="../img/9.14.png" alt>
+								<img src="../img/9.13.png" alt>
+								<span>文件二</span>
+								<ul>
+									<li class="one">
+										<img src="../img/9.3.png" alt>
+										<span>文档一</span>
+									</li>
+									<li class="one">
+										<img src="../img/9.15.png" alt>
+										<span>文档二</span>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<img src="../img/9.12.png" alt>
+								<img src="../img/9.11.png" alt>
+								<span>文件三</span>
+							</li>
+						</ul>
+					</li>
+					<li class="down">
+						<img src="../img/9.4.png" alt>
+						<span>个人收藏</span>
+					</li>
+					<li class="down">
+						<img src="../img/9.7.png" alt>
+						<span>我的分享</span>
+					</li>
+					<li class="down">
+						<img src="../img/9.4.png" alt>
+						<span>图库</span>
+					</li>
+					<li class="down">
+						<img src="../img/9.4.png" alt>
+						<span>成长记录</span>
+					</li>
+					<li class="down">
+						<img src="../img/9.6.png" alt>
+						<span>账户信息</span>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="right">
+			<div class="head">
+				<p>c站 / 个人报表 / 文件一 / <span>文档一</span></p>
+			</div>
+			<div class="foot">
+				<div class="plate1">
+					<div class="find">
+						<span>查询项</span>
+						<select>
+							<option value="第一项">第一项</option>
+						</select>
+					</div>
+					<div class="change">
+						<div class="one">
+							<span>买方</span>
+							<select>
+								<option value="小A">小A</option>
+							</select>
+							<span>卖方</span>
+							<select>
+								<option value="小C">小C</option>
+							</select>
+						</div>
+						<div class="two">
+							<img src="../img/9.18.png" alt>
+						</div>
+					</div>
+					<div class="data">
+						<div class="data-nav1">
+							<span>日期</span>
+							<input type="text" value="2016-04-01">
+							<span>总耗时</span>
+							<select>
+								<option value="day">8天</option>
+							</select>
+						</div>
+						<div class="data-nav2">
+							<span>人数</span>
+							<select>
+								<option value="people">10人</option>
+							</select>
+							<span>成交项</span>
+							<select class="people" >
+								<option value="ten">10项</option>
+							</select>
+						</div>
+					</div>
+					<div class="search">
+						<input type="submit" value="搜索">
+					</div>
+				</div>
+				<div class="plate2">
+					<ul>
+						<li class="time-left">
+							<img src="../img/9.20.png" alt>
+						</li>
+						<li class="time-t">
+							<p>
+								10:00 am<span>￥1200</span>
+							</p>
+						</li>
+						<li class="time-nav">
+							<p>
+								11:00 am<span>￥1300</span>
+							</p>	
+						</li>
+						<li class="time-nav">
+							<p>
+								12:00 am<span>￥1200</span>
+							</p>
+						</li>
+						<li class="time-nav">
+							<p>
+								01:00 am<span>￥1400</span>
+							</p>
+						</li>
+						<li class="time-nav">
+							<p>
+								02:00 am<span>￥1200</span>
+							</p>
+						</li>
+						<li class="time-nav">
+							<p>
+								03:00 am<span>￥1200</span>
+							</p>
+						</li>
+						<li class="time-right">
+							<img src="../img/9.21.png" alt>
+						</li>
+						<li class="time-h">
+							<img src="../img/9.22.png">
+							<span>历史查询</span>
+						</li>
+					</ul>
+				</div>
+				<div class="plate3">
+					<h4>2016年4月份统计</h4>
+					<ul class="up">
+						<li class="green">
+							<div class="text">
+								<p>133311</p>
+								<p><span>成交量</span</p>
+							</div>
+							<div class="color1"></div>
+						</li>
+						<li class="blue">
+							<div class="text">
+								<p>133311</p>
+								<p><span>成交量</span></p>
+							</div>
+							<div class="color2"></div>
+						</li>
+						<li class="red">
+							<div class="text">
+								<p>133311</p>
+								<p><span>成交量</span></p>
+							</div>
+							<div class="color3"></div>
+						</li>
+						<li class="yellow">
+							<div class="text">
+								<p>133311</p>
+								<p><spam>成交量</span></p>
+							</div>
+							<div class="color4"></div>
+						</li>
+					</ul>
+				</div>
+				<div class="plate4">
+					<div class="plate4-left">
+						<h4 class="plate4-left-nav">第一组项目</h4>
+						<div class="plate4-list">
+							<ul class="plate4-one">
+								<li>项目一</li>
+								<li>项目一</li>
+								<li>项目一</li>
+								<li>项目一</li>
+								<li>项目一</li>
+							</ul>
+							<div class="table">
+								<table border="1" bordercolor="ddd">
+									<tbody>
+										<tr>
+											<td class="bac">购买材料一</td>
+											<td>购买材料一</td>
+											<td>购买材料一</td>
+											<td>购买材料一</td>
+										</tr>
+										<tr>
+											<td>购买材料二</td>
+											<td>购买材料二</td>
+											<td>购买材料二</td>
+											<td>购买材料二</td>
+										</tr>
+										<tr>
+											<td>购买材料四</td>
+											<td>购买材料四</td>
+											<td>购买材料四</td>
+											<td>购买材料四</td>
+										</tr>
+										<tr>
+											<td>购买材料六</td>
+											<td>购买材料六</td>
+											<td>购买材料六</td>
+											<td>购买材料六</td>
+										</tr>
+										<tr>
+											<td>购买材料十三</td>
+											<td>购买材料十三</td>
+											<td>购买材料十三</td>
+											<td>购买材料十三</td>
+										</tr>
+										<tr>
+											<td>购买材料二十</td>
+											<td>购买材料二十</td>
+											<td>购买材料二十</td>
+											<td>购买材料二十</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+					<div class="plate4-right">
+						<h4 class="plate4-right-nav">第一组项目</h4>
+						<div class="plate-text">
+							<div class="text-one">
+								<p>标题</p>
+								<p><span>项目报表三</span></p>
+							</div>
+							<div class="text-two">
+								<div class="text-two-left">
+									<p>价格</p>
+									<p><span>￥158</span></p>
+								</div>
+								<div class="text-two-right">
+									<p>负责人</p>
+									<p><span>小A</span></p>
+								</div>
+							</div>
+							<div class="text-three">
+								<p>详细描述</p>
+								<p><span>该项目目前负责人是......</span></p>
+							</div>
+							<div class="text-four">
+									<input type="checkbox" checked>
+									<p>遵守保密协议</p>
+									<input class="button" type="submit" value="搜索">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="plate5">
+					<div class="plate5-left">
+						<h4 class="plate5-left-nav">日历</h4>
+						<div class="plate5-list">
+							<div class="list-one">
+								<select>
+									<option>2016年</option>
+								</select>
+								<select>
+									<option>4月</option>
+								</select>
+								<select>
+									<option>标注日期</option>
+								</select>
+								<span>返回今天</span>
+							</div>
+							<div class="list-two">
+								<ul class="list-data">
+									<li>一</li>
+									<li>二</li>
+									<li>三</li>
+									<li>四</li>
+									<li>五</li>
+									<li>六</li>
+									<li>日</li>
+								</ul>
+							</div>
+							<div class="list-three">
+								<ul class="list-three1">
+									<li class="list-three1-nav"></li>
+									<li class="list-three1-nav"></li>
+									<li class="list-three1-nav"></li>
+									<li class="list-three1-nav"></li>
+									<li>
+										<p class="list-black">1</p>
+										<p class="list-red">愚人节</p>
+									</li>
+									<li>
+										<p class="list-red">2</p>
+										<p class="list-black">廿五</p>
+									</li>
+									<li>
+										<p class="list-red">3</p>
+										<p class="list-black">廿六</p>
+									</li>
+								</ul>
+								<ul class="list-three2">
+									<li>
+										<p class="list-black">4</p>
+										<p class="list-black">廿七</p>
+									</li>
+									<li>
+										<p class="list-black">5</p>
+										<p class="list-red">清明</p>
+									</li>
+									<li>
+										<p class="list-black">6</p>
+										<p class="list-black">廿九</p>
+									</li>
+									<li>
+										<p class="list-black">7</p>
+										<p class="list-black">三月</p>
+									</li>
+									<li class="border">
+										<p class="list-black">8</p>
+										<p class="list-black">初二</p>
+									</li>
+									<li class="border">
+										<p class="list-red">9</p>
+										<p class="list-black">初三</p>
+									</li>
+									<li>
+										<p class="list-red">10</p>
+										<p class="list-black">初四</p>
+									</li>
+								</ul>
+								<ul class="list-three3">
+									<li>
+										<p class="list-black">11</p>
+										<p class="list-black">初五</p>
+									</li>
+									<li class="border">
+										<p class="list-black">12</p>
+										<p class="list-black">初六</p>
+									</li>
+									<li>
+										<p class="list-black">13</p>
+										<p class="list-black">初七</p>
+									</li>
+									<li>
+										<p class="list-black">14</p>
+										<p class="list-black">初八</p>
+									</li>
+									<li>
+										<p class="list-black">15</p>
+										<p class="list-black">初九</p>
+									</li>
+									<li>
+										<p class="list-red">16</p>
+										<p class="list-black">初十</p>
+									</li>
+									<li>
+										<p class="list-red">17</p>
+										<p class="list-black">十一</p>
+									</li>
+								</ul>
+								<ul class="list-three4">
+									<li>
+										<p class="list-black">18</p>
+										<p class="list-black">十二</p>
+									</li>
+									<li class="border">
+										<p class="list-black">19</p>
+										<p class="list-black">十三</p>
+									</li>
+									<li>
+										<p class="list-black">20</p>
+										<p class="list-black">十四</p>
+									</li>
+									<li>
+										<p class="list-black">21</p>
+										<p class="list-black">十五</p>
+									</li>
+									<li>
+										<p class="list-black">22</p>
+										<p class="list-black">十六</p>
+									</li>
+									<li>
+										<p class="list-red">23</p>
+										<p class="list-black">十七</p>
+									</li>
+									<li>
+										<p class="list-red">24</p>
+										<p class="list-black">十八</p>
+									</li>
+								</ul>
+								<ul class="list-three5">
+									<li>
+										<p class="list-black">25</p>
+										<p class="list-black">十九</p>
+									</li>
+									<li>
+										<p class="list-black">26</p>
+										<p class="list-black">廿十</p>
+									</li>
+									<li>
+										<p class="list-black">27</p>
+										<p class="list-black">廿一</p>
+									</li>
+									<li>
+										<p class="list-black">28</p>
+										<p class="list-black">廿二</p>
+									</li>
+									<li>
+										<p class="list-black">29</p>
+										<p class="list-black">廿三</p>
+									</li>
+									<li>
+										<p class="list-red">30</p>
+										<p class="list-black">廿四</p>
+									</li>
+									<li></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="plate5-right">
+						<h4 class="plate5-right-nav">汽车行业品牌榜</h4>
+						<div class="plate5-table">
+							<table border="1" bordercolor="#cacbcb">
+								<tbody>
+									<tr>
+										<td class="bor1">排名</td>
+										<td class="bor2">品牌</td>
+										<td class="bor3">搜索指数</td>
+									</tr>
+									<tr class="plate5-bac">
+										<td class="bor1">1</td>
+										<td class="bor2">大众</td>
+										<td class="bor3">
+											<span>48912001</span>
+											<div class="line">
+												<span class="line-red1"></span>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="bor1">2</td>
+										<td class="bor2">丰田</td>
+										<td class="bor3">
+											<span>29307333</span>
+											<div class="line">
+												<span class="line-red2"></span>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="bor1">3</td>
+										<td class="bor2">奥迪</td>
+										<td class="bor3">
+											<span>23139070</span>
+											<div class="line">
+												<span class="line-blue1"></span>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="bor1">4</td>
+										<td class="bor2">本田</td>
+										<td class="bor3">
+											<span>22885564</span>
+											<div class="line">
+												<span class="line-blue2"></span>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="bor1">5</td>
+										<td class="bor2">福特</td>
+										<td class="bor3">
+											<span>22324792</span>
+											<div class="line">
+												<span class="line-blue3"></span>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="bor1">6</td>
+										<td class="bor2">宝马</td>
+										<td class="bor3">
+											<span>21444077</span>
+											<div class="line">
+												<span class="line-blue4"></span>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="bor1" >7</td>
+										<td class="bor2">现代</td>
+										<td class="bor3">
+											<span>20114969</span>
+											<div class="line">
+												<span class="line-blue5"></span>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="bor1">8</td>
+										<td class="bor2">起亚</td>
+										<td class="bor3">
+											<span>19251689</span>
+											<div class="line">
+												<span class="line-blue6"></span>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="bor1">9</td>
+										<td class="bor2">奔驰</td>
+										<td class="bor3">
+											<span>19172837</span>
+											<div class="line">
+												<span class="line-blue7"></span>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td class="bor1">10</td>
+										<td class="bor2">别克</td>
+										<td class="bor3">
+											<span>18544027</span>
+											<div class="line">
+												<span class="line-blue8"></span>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task12</title>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		.table{border-collapse: separate;border-spacing: 2px;border-color: #808080;}
+		.list{margin:20px 0 50px 20px;}
+		.list tr:nth-child(2n+1){background-color: #cccccc;}
+		.list th{background-color: #000;color: #fff;text-align: left;}
+		.list .list-red{color: #ff0000;}
+		.input{margin: 50px 0 0 20px;}
+		.input .text{width: 100px;height: 20px;border: solid 1px #ccc;font-size: 12px;line-height: 20px;padding-left: 10px;}
+		.input input{background-color: #fff;transition: 0.5s width;}
+		.input input:focus{width: 200px;}
+
+		.plate{margin: 50px 0 0 20px;}
+		.plate .plate-main{position: relative; list-style: none;width: 300px;height: 120px;}
+		.plate .plate-main .plate-nav{position: absolute;top: 0;width: 300px;height: 120px;    transform: translateX(0);}
+		.plate .plate-main .plate-nav:target{transition:0.5s;z-index: 2;}
+
+		.plate .plate-main #one{background-color:red;}
+		.plate .plate-main #two{background-color:green;}
+		.plate .plate-main #three{background-color:blue;}
+
+		.plate .platewrap{position: relative;top:0px;right: -195px;}
+		.plate .platewrap .platewrap-nav{display: inline-block;width: 30px;height: 30px;line-height: 30px;text-align: center;color: #000;background-color: #fff;opacity: 0.5;text-decoration: none;}
+	</style>
+</head>
+<body>
+	<table class="list">
+		<tbody>
+			<tr>
+				<th>排名</th>
+				<th>网站</th>
+				<th>热度</th>
+			</tr>
+			<tr class="list-red">
+				<td>1.</td>
+				<td>百度前端技术学院</td>
+				<td>13000</td>
+			</tr>
+			<tr class="list-red">
+				<td>2</td>
+				<td>百度前端技术学院</td>
+				<td>12000</td>
+			</tr>
+			<tr class="list-red">
+				<td>3</td>
+				<td>百度前端技术学院</td>
+				<td>11000</td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>百度前端技术学院</td>
+				<td>10000</td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>百度前端技术学院</td>
+				<td>9000</td>
+			</tr>
+			<tr>
+				<td>6</td>
+				<td>百度前端技术学院</td>
+				<td>8000</td>
+			</tr>
+			<tr>
+				<td>7</td>
+				<td>百度前端技术学院</td>
+				<td>7000</td>
+			</tr>
+			<tr>
+				<td>8</td>
+				<td>百度前端技术学院</td>
+				<td>6000</td>
+			</tr>
+			<tr>
+				<td>9</td>
+				<td>百度前端技术学院</td>
+				<td>5000</td>
+			</tr>
+			<tr>
+				<td>10</td>
+				<td>百度前端技术学院</td>
+				<td>4000</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="input">
+		<input type="text" class="text">
+	</div>
+	<div class="plate">
+		<ul class="plate-main">
+			<li class="plate-nav" id="one">1</li>
+			<li class="plate-nav" id="two">2</li>
+			<li class="plate-nav" id="three">3</li>
+		</ul>
+		<div class="platewrap">
+			<a href="#one" class="platewrap-nav">1</a>
+			<a href="#two" class="platewrap-nav">2</a>
+			<a href="#three" class="platewrap-nav">3</a>
+		</div>
+	</div>
+</body>
+</html>
